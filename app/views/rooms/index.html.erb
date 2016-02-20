@@ -13,7 +13,9 @@
   <% @rooms.each do |e| %>
   <tr>
     <td><%= e.name  %></td>
-    <td><button type="button" name="join">Join</button></td>
+    <td>
+      <%= link_to 'Join', room_path(e), class: 'button' %>
+    </td>
   </tr>
   <% end %>
 

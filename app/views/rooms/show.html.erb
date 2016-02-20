@@ -1,0 +1,22 @@
+<h3>Welcom to room: <%= @room.name %></h3>
+
+<div class='row'>
+  <div class='column column-50'>
+    <% @messages.each do |m| %>
+      <blockquote>
+        <div> <h5><%= m.title %></h5> </div>
+        <div> <%= m.content %> </div>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class='column column-50'>
+    <%= semantic_form_for @new_message, url: room_messages_path(room_id: @room.id) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.action :submit%>
+    <% end %>
+  </div>
+</div>
+
+<div class='row'>
+</div>

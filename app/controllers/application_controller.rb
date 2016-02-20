@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
     user
   end
   alias logged_in? current_user
+
+  def redirect_to_rooms
+    if logged_in?
+      flash.notice = 'Find the best room and enjoy yourself'
+      redirect_to rooms_path
+    end
+  end
 end

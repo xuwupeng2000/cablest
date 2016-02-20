@@ -1,30 +1,27 @@
 App.room = App.cable.subscriptions.create("RoomChannel",
-  function connected() {
-    console.log('connected');
-  },
+  {
+    connected: function connected() {
+      console.log('connected');
+    },
 
-  function disconnected() {
-    console.log('disconnected');
-  },
+    disconnected: function disconnected() {
+      console.log('disconnected');
+    },
 
-  function received(data) {
-    console.log('data received:', data);
-  },
+    received: function received(data) {
+      console.log('data received:', data);
+    },
 
-  function host(name) {
-    this.perform('host');
-  },
+    quit: function quit(room_id) {
+      this.perform('quit', room_id);
+    },
 
-  function quit(room_id) {
-    this.perform('quit', room_id);
-  },
+    join: function join(room_id) {
+      this.perform('join', room_id);
+    },
 
-  function join(room_id) {
-    this.perform('join', room_id);
-  },
-
-  function speak(message) {
-    this.perform('speak', message);
+    speak: function speak(message) {
+      this.perform('speak', {message: message});
+    }
   }
-
 );

@@ -7,10 +7,10 @@ module ApplicationCable
       current_user = find_current_user
       if current_user
         self.current_user = current_user
+        logger.add_tags 'ActionCable', current_user.name
       else
         redirect_to_pub
       end
-      logger.add_tags 'ActionCable', current_user.name
     end
 
     private
@@ -23,7 +23,6 @@ module ApplicationCable
 
     def redirect_to_pub
       # Unsigned user go to the pub
-      steam_from 'the_pub'
     end
 
   end

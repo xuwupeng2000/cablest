@@ -1,36 +1,31 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in an EventMachine loop that does not support auto reloading.
 class RoomChannel < ApplicationCable::Channel
-  def join(room_id)
-    validate_room
 
-    stream_from "room_channel_#{@room_id}"
+  def join(message)
+    if find_room(message)
+      stream_from "room_channel_#{@room_id}"
+    end
   end
 
   def quit(room_id)
-    validate_room
-
-    ActionCable.server.broadcast "room_channel_#{@room.id}", {message: "You have left room #{@room.name}"}
+    if find_room(message)
+      ActionCable.server.broadcast "room_channel_pub", {message: "#{current_user.name} have left room: #{@room.name}"}
+    end
   end
 
   def speak(message)
-    validate_room
-
-    ActionCable.server.broadcast "room_channel_#{@room.id}", {message: message}
-  end
-
-  def host(name)
-    new_room = Room.new.tap do |r|
-      r.user = current_user
-      r.name = name
+    if find_room(message)
+      ActionCable.server.broadcast "room_channel_#{@room.id}", {message: message}
+    else
+      ActionCable.server.broadcast "room_channel_pub", {message: message}
     end
-    new_room.save!
   end
 
   private
 
-  def validate_room
-    @room ||= Room.find(room_id)
-    reject_unauthorized_connection unless @room
+  def find_room(message)
+    @room ||= Room.find_by(id: message[:room_id])
+    @room ? true : false
   end
 
 end

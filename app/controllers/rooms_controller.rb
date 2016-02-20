@@ -1,6 +1,12 @@
 class RoomsController < ApplicationController
   before_action :logged_in?
 
+  def show
+    @room = Room.find(params[:id])
+    @messages = Message.where(room: @room).to_a
+    @new_message = Message.new(title: Faker::Company.name)
+  end
+
   def new
     @room = Room.new(name: Faker::Company.name)
   end
