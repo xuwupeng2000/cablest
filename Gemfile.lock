@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/matthewlehner/sprockets-es6.git
+  revision: 52ab801b73ea713b98c604bd5ea4fa7c33ab7faf
+  specs:
+    sprockets-es6 (0.8.2)
+      babel-source (>= 5.8.11)
+      babel-transpiler
+      sprockets (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,12 +50,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.0.0)
+    awesome_print (1.6.1)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     builder (3.2.2)
     byebug (8.2.2)
+    coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -87,6 +98,12 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (2.16.0)
     rack (2.0.0.alpha)
       json
@@ -143,14 +160,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    spring (1.6.3)
+    slop (3.6.0)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-es6 (0.9.0)
-      babel-source (>= 5.8.11)
-      babel-transpiler
-      sprockets (>= 3.0.0)
     sprockets-rails (3.0.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
@@ -178,18 +191,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   byebug
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
+  pry-rails
   puma
   rails (>= 5.0.0.beta2, < 5.1)
   redis (~> 3.0)
   rspec-rails
   sass-rails (~> 5.0)
-  spring
-  sprockets (>= 3.0.0.beta)
-  sprockets-es6
+  sprockets (= 3.5.2)
+  sprockets-es6!
   sqlite3
   turbolinks
   tzinfo-data

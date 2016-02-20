@@ -5,8 +5,9 @@ gem 'sqlite3'
 gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'sprockets', '>=3.0.0.beta'
-gem 'sprockets-es6'
+gem 'sprockets', '3.5.2'
+gem 'sprockets-es6', git: 'https://github.com/matthewlehner/sprockets-es6.git'
+
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -20,8 +21,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-rails'
+  gem 'awesome_print'
   gem 'web-console', '~> 3.0'
-  gem 'spring'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
