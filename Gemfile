@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis', '~> 3.0'
 gem 'bcrypt'
 gem 'formtastic'
+gem 'faker'
+gem 'hashie'
 
 group :development, :test do
   gem 'byebug'

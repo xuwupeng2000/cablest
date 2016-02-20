@@ -1,1 +1,7 @@
 <h3>Login</h3>
+
+<%= semantic_form_for User.new, url: sessions_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password, as: :password %>
+  <%= f.action :submit, label: 'Login'%>
+<% end %>

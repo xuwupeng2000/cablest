@@ -1,0 +1,20 @@
+<h3>Rooms are all there</h3>
+
+<div>
+  <%= link_to 'Add new room', new_room_path %>
+</div>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td></td>
+  </tr>
+
+  <% @rooms.each do |e| %>
+  <tr>
+    <td><%= e.name  %></td>
+    <td><button type="button" name="join">Join</button></td>
+  </tr>
+  <% end %>
+
+</table>
