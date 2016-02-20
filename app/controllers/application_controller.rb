@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
   def current_user
     return nil unless session[:current_user]
 
-    user = session[:current_user]
+    if session[:current_user].is_a?(User)
+      user = session[:current_user]
+    else
+      u = Hashie::Mash.new session[:current_user]
+      user = User.find(u.id)
+    end
     user
   end
   alias logged_in? current_user

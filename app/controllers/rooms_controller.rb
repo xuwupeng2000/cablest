@@ -6,9 +6,8 @@ class RoomsController < ApplicationController
   end
 
   def create
-    u = Hashie::Mash.new current_user
     @room = Room.new(room_params).tap do |e|
-      e.user = User.find(u.id)
+      e.user = current_user
     end
     @room.save!
 
