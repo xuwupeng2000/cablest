@@ -13,7 +13,7 @@ App.room = App.cable.subscriptions.create("RoomChannel",
 
   function host(name) {
     this.perform('host');
-  }
+  },
 
   function quit(room_id) {
     this.perform('quit', room_id);

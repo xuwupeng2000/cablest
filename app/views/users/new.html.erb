@@ -1,0 +1,10 @@
+<h3>Create a new account</h3>
+
+<%= semantic_form_for @user do |f| %>
+  <%= f.input :email %>
+  <%= f.input :name %>
+  <%= f.input :profile %>
+  <%= f.input :password, as: :password %>
+  <%= f.input :password_confirmation, as: :password %>
+  <%= f.action :submit%>
+<% end %>
