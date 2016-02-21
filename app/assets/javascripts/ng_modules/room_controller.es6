@@ -12,9 +12,6 @@
     activate();
 
     function subscribeToRoomChannel() {
-      // TODO: Promise then click
-      $log.debug(roomChannel);
-      $log.debug(gon.room.id);
       roomChannel.join(gon.room.id);
     }
 

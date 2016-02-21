@@ -21,6 +21,7 @@
 
         received: function received(data) {
           console.log('data received:', data);
+          alert(data.message);
         },
 
         quit: function quit(room_id) {

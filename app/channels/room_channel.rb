@@ -2,8 +2,9 @@
 class RoomChannel < ApplicationCable::Channel
 
   def join(message)
+    message.symbolize_keys!
     if find_room(message)
-      stream_from "room_channel_#{@room_id}"
+      stream_from "room_channel_#{@room.id}"
     end
   end
 
@@ -24,7 +25,7 @@ class RoomChannel < ApplicationCable::Channel
   private
 
   def find_room(data)
-    @room ||= Room.find_by(id: data[:room_id])
+    @room = Room.find_by(id: data[:room_id])
     @room ? true : false
   end
 
