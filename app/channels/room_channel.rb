@@ -13,18 +13,18 @@ class RoomChannel < ApplicationCable::Channel
     end
   end
 
-  def speak(message)
-    if find_room(message)
-      ActionCable.server.broadcast "room_channel_#{@room.id}", {message: message}
+  def speak(data)
+    if find_room(data)
+      ActionCable.server.broadcast "room_channel_#{@room.id}", {message: data[:message]}
     else
-      ActionCable.server.broadcast "room_channel_pub", {message: message}
+      ActionCable.server.broadcast "room_channel_pub", {message: data[:message]}
     end
   end
 
   private
 
-  def find_room(message)
-    @room ||= Room.find_by(id: message[:room_id])
+  def find_room(data)
+    @room ||= Room.find_by(id: data[:room_id])
     @room ? true : false
   end
 

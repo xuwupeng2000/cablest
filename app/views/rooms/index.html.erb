@@ -1,22 +1,24 @@
-<h3>Rooms are all there</h3>
-
 <div>
-  <%= link_to 'Add new room', new_room_path %>
+  <h3>Rooms are all there</h3>
+
+  <div>
+    <%= link_to 'Add new room', new_room_path %>
+  </div>
+
+  <table>
+    <tr>
+      <td>Name</td>
+      <td></td>
+    </tr>
+
+    <% @rooms.each do |e| %>
+    <tr>
+      <td><%= e.name  %></td>
+      <td>
+        <%= link_to 'Join', room_path(e) %>
+      </td>
+    </tr>
+    <% end %>
+
+  </table>
 </div>
-
-<table>
-  <tr>
-    <td>Name</td>
-    <td></td>
-  </tr>
-
-  <% @rooms.each do |e| %>
-  <tr>
-    <td><%= e.name  %></td>
-    <td>
-      <%= link_to 'Join', room_path(e), class: 'button' %>
-    </td>
-  </tr>
-  <% end %>
-
-</table>

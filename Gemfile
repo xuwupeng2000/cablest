@@ -9,13 +9,15 @@ gem 'sprockets', '3.5.2'
 gem 'sprockets-es6', git: 'https://github.com/matthewlehner/sprockets-es6.git'
 
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'redis', '~> 3.0'
 gem 'bcrypt'
 gem 'formtastic'
 gem 'faker'
 gem 'hashie'
+
+gem 'angularjs-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'byebug'
