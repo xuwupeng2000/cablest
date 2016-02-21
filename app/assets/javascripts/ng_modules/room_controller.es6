@@ -9,7 +9,16 @@
 
   function controller($log, $q, $scope, $rootScope, roomChannel) {
     $scope.subscribeToRoomChannel = subscribeToRoomChannel;
+    $scope.submit = submitNewMessage;
+    $scope.message = {};
+
     activate();
+
+    function submitNewMessage($event) {
+      $event.preventDefault()
+      let data = {message: $scope.message, room_id: gon.room_id};
+      roomChannel.speak(data);
+    }
 
     function subscribeToRoomChannel() {
       roomChannel.join(gon.room.id);

@@ -8,32 +8,32 @@
   factory.$inject = ['$rootScope'];
 
   function factory($rootScope) {
+    // TODO: RoomChannel is room_channel in order to new channel we need to create new subscription
     const service = $rootScope.cable.subscriptions.create("RoomChannel",
       {
-        connected: function connected() {
+        connected: function () {
           $rootScope.$broadcast('cable-connected', true)
           console.log('connected');
         },
 
-        disconnected: function disconnected() {
+        disconnected: function () {
           console.log('disconnected');
         },
 
-        received: function received(data) {
-          console.log('data received:', data);
-          alert(data.message);
+        received: function (data) {
+          alert(data.message.content);
         },
 
-        quit: function quit(room_id) {
-          this.perform('quit', {room_id: room_id});
+        quit: function (roomId) {
+          this.perform('quit', {roomId: roomId});
         },
 
-        join: function join(room_id) {
-          this.perform('join', {room_id: room_id})
+        join: function (roomId) {
+          this.perform('join', {roomId: roomId})
         },
 
-        speak: function speak(message) {
-          this.perform('speak', {message: message});
+        speak: function (data) {
+          this.perform('speak', data);
         }
       }
     );

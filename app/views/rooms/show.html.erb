@@ -11,11 +11,13 @@
       <% end %>
     </div>
     <div class='column column-50'>
-      <%= semantic_form_for @new_message, url: room_messages_path(room_id: @room.id) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :content %>
-        <%= f.action :submit%>
+      <%= semantic_form_for @new_message, url: room_messages_path(room_id: @room.id), html: {'ng-submit' => 'submit($event)'} do |f| %>
+        <%= f.input :title, input_html: {'ng-model' => 'message.title'} %>
+        <%= f.input :content, input_html: {'ng-model' => 'message.content'} %>
+        <!-- <%= f.action :submit%> -->
+        <input type="submit" name="name" value="post">
       <% end %>
+      </ng-submit>
     </div>
   </div>
 
